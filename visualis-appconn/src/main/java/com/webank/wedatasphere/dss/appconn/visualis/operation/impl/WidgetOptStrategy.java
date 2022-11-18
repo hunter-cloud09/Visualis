@@ -31,6 +31,7 @@ public class WidgetOptStrategy extends AbstractOperationStrategy {
     @Override
     public RefJobContentResponseRef createRef(ThirdlyRequestRef.DSSJobContentWithContextRequestRef requestRef) throws ExternalOperationFailedException {
         String url = baseUrl + URLUtils.widgetUrl;
+        url = URLUtils.trimDoubleSlash(url);
         DSSPostAction postAction = new DSSPostAction();
         postAction.setUser(requestRef.getUserName());
         postAction.addRequestPayload("widgetName", requestRef.getName());
@@ -54,6 +55,7 @@ public class WidgetOptStrategy extends AbstractOperationStrategy {
     @Override
     public void deleteRef(ThirdlyRequestRef.RefJobContentRequestRefImpl visualisDeleteRequestRef) throws ExternalOperationFailedException {
         String url = baseUrl + URLUtils.widgetDeleteUrl + "/" + getWidgetId(visualisDeleteRequestRef.getRefJobContent());
+        url = URLUtils.trimDoubleSlash(url);
         // Delete协议在加入url label时会存在被nginx拦截转发情况，在这里换成Post协议对label进行兼容
         DSSPostAction deleteAction = new DSSPostAction();
         LabelRouteVO routeVO = new LabelRouteVO();

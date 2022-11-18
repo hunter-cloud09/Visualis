@@ -64,4 +64,7 @@ public class URLUtils {
         return url + "?env=" + labels.toLowerCase();
     }
 
+    public static String trimDoubleSlash(String url){
+        return url.replaceAll("(?<=[^:])//", "/");
+    }
 }

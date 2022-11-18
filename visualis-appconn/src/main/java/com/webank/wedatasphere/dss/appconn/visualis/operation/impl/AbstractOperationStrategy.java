@@ -62,6 +62,7 @@ public abstract class AbstractOperationStrategy implements OperationStrategy {
 
     protected ResponseRef executeRef(RefExecutionRequestRef.RefExecutionProjectWithContextRequestRef ref,
                                      String url) throws ExternalOperationFailedException {
+        url = URLUtils.trimDoubleSlash(url);
         logger.info("User {} try to execute Visualis {} with refJobContent: {} in url {}.", ref.getExecutionRequestRefContext().getSubmitUser(),
                 ref.getType(), ref.getRefJobContent(), url);
         DSSGetAction visualisGetAction = new DSSGetAction();

@@ -40,7 +40,7 @@ public class DisplayOptStrategy extends AbstractOperationStrategy {
 
     @Override
     public RefJobContentResponseRef createRef(ThirdlyRequestRef.DSSJobContentWithContextRequestRef requestRef) throws ExternalOperationFailedException {
-        String url = baseUrl + URLUtils.displayUrl;
+        String url = URLUtils.trimDoubleSlash(baseUrl + URLUtils.displayUrl);
         logger.info("requestUrl:{}", url);
 
         DSSPostAction visualisPostAction = new DSSPostAction();
@@ -66,7 +66,7 @@ public class DisplayOptStrategy extends AbstractOperationStrategy {
 
     @Override
     public void deleteRef(ThirdlyRequestRef.RefJobContentRequestRefImpl visualisDeleteRequestRef) throws ExternalOperationFailedException {
-        String url = baseUrl + URLUtils.displayUrl + "/" + getDisplayId(visualisDeleteRequestRef.getRefJobContent());
+        String url = URLUtils.trimDoubleSlash(baseUrl + URLUtils.displayUrl) + "/" + getDisplayId(visualisDeleteRequestRef.getRefJobContent());
         // Delete协议在加入url label时会存在被nginx拦截转发情况，在这里换成Post协议对label进行兼容
         DSSPostAction deleteAction = new DSSPostAction();
         LabelRouteVO routeVO = new LabelRouteVO();
@@ -79,7 +79,7 @@ public class DisplayOptStrategy extends AbstractOperationStrategy {
 
     private void createDisplaySlide(String displayId, ThirdlyRequestRef.DSSJobContentWithContextRequestRef requestRef) throws ExternalOperationFailedException {
         String id = NumberUtils.parseDoubleString(displayId);
-        String url = baseUrl + URLUtils.displayUrl + "/" + id + "/slides";
+        String url = URLUtils.trimDoubleSlash(baseUrl + URLUtils.displayUrl) + "/" + id + "/slides";
         DSSPostAction visualisPostAction = new DSSPostAction();
         visualisPostAction.setUser(requestRef.getUserName());
         visualisPostAction.addRequestPayload("config", URLUtils.displaySlideConfig);
@@ -115,7 +115,7 @@ public class DisplayOptStrategy extends AbstractOperationStrategy {
     @Override
     public ResponseRef updateRef(ThirdlyRequestRef.UpdateWitContextRequestRefImpl requestRef) throws ExternalOperationFailedException {
         long id = getDisplayId(requestRef.getRefJobContent());
-        String url = baseUrl + URLUtils.displayUrl + "/" + id;
+        String url = URLUtils.trimDoubleSlash(baseUrl + URLUtils.displayUrl) + "/" + id;
         DSSPutAction putAction = new DSSPutAction();
         putAction.addRequestPayload("projectId", requestRef.getRefProjectId());
         putAction.addRequestPayload("name", requestRef.getName());
@@ -167,6 +167,7 @@ public class DisplayOptStrategy extends AbstractOperationStrategy {
     @Override
     public ResponseRef executeRef(RefExecutionRequestRef.RefExecutionProjectWithContextRequestRef ref) throws ExternalOperationFailedException {
         String previewUrl = URLUtils.getUrl(baseUrl, URLUtils.DISPLAY_PREVIEW_URL_FORMAT, getDisplayId(ref.getRefJobContent()).toString());
+        previewUrl = URLUtils.trimDoubleSlash(previewUrl);
         logger.info("User {} try to execute Visualis display with refJobContent: {} in previewUrl {}.", ref.getExecutionRequestRefContext().getSubmitUser(),
                 ref.getRefJobContent(), previewUrl);
         ref.getExecutionRequestRefContext().appendLog(String.format("The %s of Visualis try to execute ref RefJobContent: %s in previewUrl %s.", ref.getType(), ref.getRefJobContent(), previewUrl));
