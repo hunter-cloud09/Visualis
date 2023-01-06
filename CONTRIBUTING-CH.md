@@ -76,7 +76,7 @@ npm run build
 ```
 
 #### 后端
-用户配置在项目根目录 /config/ 下，项目启动脚本和升级补丁脚本在项目根目录 /bin/ 下， 后端代码及核心配置在 server/ 目录下, 日志在项目根目录 /log/ 下。注意：此处所指项目根目录都指环境变量 DAVINCI3_HOME 所配置的目录，在使用 IDE 开发过程中也需要配置环境变量，如 Idea 关于环境变量加载的优先级：`Run/Debug Configurations` 中配置的 `Environment variables` —>  IDE缓存的系统环境变量。
+用户配置在项目根目录 /config/ 下，项目启动脚本和升级补丁脚本在项目根目录 /bin/ 下， 后端代码及核心配置在 server/ 目录下, 日志在项目根目录 /log/ 下。注意：此处所指项目根目录都指环境变量 VISUALIS_HOME 所配置的目录，在使用 IDE 开发过程中也需要配置环境变量，如 Idea 关于环境变量加载的优先级：`Run/Debug Configurations` 中配置的 `Environment variables` —>  IDE缓存的系统环境变量。
 
 ##### 目录结构
 
@@ -139,7 +139,7 @@ npm run build
 ``` 
 
 ##### 环境变量
-配置系统环境变量或 IDE 环境变量 DAVINCI3_HOME，推荐优先使用 IDE 环境变量。
+配置系统环境变量或 IDE 环境变量 VISUALIS_HOME，推荐优先使用 IDE 环境变量。
 
 ##### 数据库
 1. 自行创建 Davinci 系统数据库；

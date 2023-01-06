@@ -4,19 +4,19 @@ cd `dirname $0`
 cd ..
 HOME=`pwd`
 
-export DAVINCI3_HOME=$HOME
+export VISUALIS_HOME=$HOME
 
 
-if [ -z "$DAVINCI3_HOME" ]; then
-  echo "DAVINCI3_HOME not found"
-  echo "Please export DAVINCI3_HOME to your environment variable"
+if [ -z "$VISUALIS_HOME" ]; then
+  echo "VISUALIS_HOME not found"
+  echo "Please export VISUALIS_HOME to your environment variable"
   exit
 fi
 
-cd $DAVINCI3_HOME
+cd $VISUALIS_HOME
 Lib_dir=`ls | grep lib`
 if [ -z "$Lib_dir" ]; then
-  echo "Invalid DAVINCI3_HOME"
+  echo "Invalid VISUALIS_HOME"
   exit
 fi
 

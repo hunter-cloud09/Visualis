@@ -64,7 +64,7 @@ spring:
 
   config:
     location: classpath:/
-    additional-location: file:${DAVINCI3_HOME}/conf/
+    additional-location: file:${VISUALIS_HOME}/conf/
     name: application
 
   resources:
@@ -114,12 +114,12 @@ logging:
 # 4. static resource configuration
 # ##################################
 file:
-  userfiles-path: ${DAVINCI3_HOME}/userfiles
-  web_resources: ${DAVINCI3_HOME}/davinci-ui/
-  base-path: ${DAVINCI3_HOME}
+  userfiles-path: ${VISUALIS_HOME}/userfiles
+  web_resources: ${VISUALIS_HOME}/davinci-ui/
+  base-path: ${VISUALIS_HOME}
 
 sql_template_delimiter: $
-custom-datasource-driver-path: ${DAVINCI3_HOME}/conf/datasource_driver.yml
+custom-datasource-driver-path: ${VISUALIS_HOME}/conf/datasource_driver.yml
 
 
 # ##################################
@@ -154,6 +154,6 @@ email:
 screenshot:
   default_browser: PHANTOMJS
   timeout_second: 1800
-  phantomjs_path: ${DAVINCI3_HOME}/bin/phantomjs
+  phantomjs_path: ${VISUALIS_HOME}/bin/phantomjs
   chromedriver_path: $your_chromedriver_path$
 
