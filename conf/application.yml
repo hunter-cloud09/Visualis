@@ -17,8 +17,11 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://127.0.0.1:20303/eureka/ # Configuration required
+      defaultZone: http://127.0.0.1:20303/eureka/ # Configuration required\
+    registry-fetch-interval-seconds: 8
   instance:
+    lease-renewal-interval-in-seconds: 4
+    lease-expiration-duration-in-seconds: 12
     metadata-map:
       test: wedatasphere
 management:
