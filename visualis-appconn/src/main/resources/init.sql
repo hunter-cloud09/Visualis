@@ -9,7 +9,7 @@ select @visualis_appconnId:=id from `dss_appconn` where `appconn_name` = 'visual
 
 delete from `dss_appconn_instance` where `homepage_uri` like '%visualis%';
 INSERT INTO `dss_appconn_instance` (`appconn_id`, `label`, `url`, `enhance_json`, `homepage_uri`)
-VALUES (@visualis_appconnId, 'DEV', 'http://APPCONN_INSTALL_IP:APPCONN_INSTALL_PORT/', '', 'dss/visualis/#/projects');
+VALUES (@visualis_appconnId, 'DEV', 'APPCONN_PROTOCOL://APPCONN_INSTALL_IP:APPCONN_INSTALL_PORT/', '', 'dss/visualis/#/projects');
 
 -- 查看"数据分析"分组ID值
 select @visualis_menuId:=id from dss_workspace_menu where name = "数据分析";
