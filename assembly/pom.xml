@@ -96,7 +96,7 @@
                 </executions>
                 <configuration>
                     <skipAssembly>false</skipAssembly>
-                    <finalName>visualis-server</finalName>
+                    <finalName>visualis-server-${project.version}</finalName>
                     <appendAssemblyId>false</appendAssemblyId>
                     <attach>false</attach>
                     <descriptors>

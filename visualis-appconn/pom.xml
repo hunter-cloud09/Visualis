@@ -177,7 +177,6 @@
                 </executions>
                 <configuration>
                     <skipAssembly>false</skipAssembly>
-                    <finalName>visualis</finalName>
                     <appendAssemblyId>false</appendAssemblyId>
                     <attach>false</attach>
                     <descriptors>
